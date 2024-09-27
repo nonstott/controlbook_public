@@ -6,7 +6,7 @@ import testCases as TC
 
 # define test parameters
 P.Ts = .01
-plant = dynamics()
+plant = dynamics(1)
 numTests = 0
 numTestsPassed = 0
     

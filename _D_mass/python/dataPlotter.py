@@ -33,7 +33,7 @@ class dataPlotter:
         # update the time history of all plot variables
         self.time_history.append(t)  # time
         self.z_ref_history.append(reference)  # reference mass position
-        self.z_history.append(states.item(0.0))  # mass position
+        self.z_history.append(states.item(0))  # mass position
         self.force_history.append(ctrl)  # force on the base
 
         # update the plots with associated histories
@@ -86,7 +86,7 @@ class myPlot:
             time is a list, 
             data is a list of lists, each list corresponding to a line on the plot
         '''
-        if self.init == True:  # Initialize the plot the first time routine is called
+        if self.init:  # Initialize the plot the first time routine is called
             for i in range(len(data)):
                 # Instantiate line object and add it to the axes
                 self.line.append(Line2D(time,

@@ -22,7 +22,7 @@ while t < P.t_end:
 
     state = np.array([[0.25+z], [theta], [0.0], [0.0]])
     animation.update(state)
-    dataPlot.update(t, r, state, f)
+    dataPlot.update(t, state, f, r)
 
     t = t + P.t_plot
     plt.pause(0.1)

@@ -19,7 +19,7 @@ while t < P.t_end:
     f = fSig.sawtooth(t)
     state = np.array([[z], [0.0]])
     animation.update(state)
-    dataPlot.update(t, r, state, f)
+    dataPlot.update(t, state, f, r)
 
     t = t + P.t_plot
     plt.pause(0.1)
