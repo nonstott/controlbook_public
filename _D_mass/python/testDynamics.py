@@ -1,6 +1,6 @@
 # use this file to test your dynamics file
 import numpy as np
-from massDynamics import massDynamics as dynamics
+from massDynamics1 import massDynamics as dynamics
 import massParam as P
 import testCases as TC
 
