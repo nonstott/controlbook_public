@@ -21,7 +21,7 @@ J1x = 0.000189
 J1y = 0.001953
 J1z = 0.001894
 m2 = 0.4717
-J2x = 0.000231
+J2x = 0.00231
 J2y = 0.003274
 J2z = 0.003416
 m3 = 0.1905
@@ -29,6 +29,7 @@ J3x = 0.000222
 J3y = 0.0001956
 J3z = 0.000027
 km = g * (m1 * ell1 + m2 * ell2) / ellT  # need to find this experimentally for hardware
+B = 0.001
 
 # mixing matrix
 unmixing = np.array([[1.0, 1.0], [d, -d]]) # converts fl and fr (LR) to force and torque (FT)

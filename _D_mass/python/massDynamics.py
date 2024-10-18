@@ -1,4 +1,6 @@
 import numpy as np
+import massParam as P 
+
 class massDynamics:
     def __init__(self, sample_rate):
         z0 = 0.0
@@ -9,20 +11,21 @@ class massDynamics:
         ])
         self.Ts = sample_rate
         self.limit = 1.0
-        self.a0 = 0.6
-        self.a1 = 0.1
-        self.b0 = 2.0
+        self.m = P.m
+        self.k = P.k
+        self.b = P.b
         alpha = 0.2
-        self.a1 = self.a1 * (1.+alpha*(2.*np.random.rand()-1.))
-        self.a0 = self.a0 * (1.+alpha*(2.*np.random.rand()-1.))
-        self.b0 = self.b0 * (1.+alpha*(2.*np.random.rand()-1.))
+        self.m = self.m * (1.+alpha*(2.*np.random.rand()-1.))
+        self.k = self.k * (1.+alpha*(2.*np.random.rand()-1.))
+        self.b = self.b * (1.+alpha*(2.*np.random.rand()-1.))
 
     def f(self, state, u):
 # for system xdot = f(x,u), return f(x,u)
         z = state.item(0)
         zdot = state.item(1)
+        force = u
 # The equations of motion.
-        zddot = -self.a1 * zdot - self.a0 * z + self.b0 * u
+        zddot = (force - self.b*zdot - self.k*z)/self.m
 # build xdot and return
         xdot = np.array([[zdot], [zddot]])
         return xdot
@@ -30,8 +33,9 @@ class massDynamics:
     def h(self):
     # Returns the measured output y = h(x)
         z = self.state.item(0)
+        y = np.array([[z]])
  # return output
-        return z
+        return y
 
     def update(self, u):
 # This is the external method that takes the input u(t)
